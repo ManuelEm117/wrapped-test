@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wrapped app test</title>
+  <link rel="manifest" href="manifest.json">
+  <script>
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches
+        || window.navigator.standalone === true;
+
+    if (isStandalone) {
+      window.location.href = "wrapped.html";
+    }
+  </script>
+</head>
+<body>
+  <h1>¡Hola! 😊</h1>
+  <p>Para ver tu wrapped, añade esta página a tu pantalla de inicio:</p>
+  <ul>
+    <li><b>iPhone:</b> Pulsa “Compartir” → “Añadir a pantalla de inicio”</li>
+    <li><b>Android:</b> Pulsa los 3 puntos → “Instalar app”</li>
+  </ul>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js');
+    }
+  </script>
+</body>
+</html>
